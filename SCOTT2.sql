@@ -154,3 +154,4 @@ FROM student s
 JOIN department d ON s.deptno1 = d.deptno
 JOIN score c ON s.studno = c.studno
 JOIN hakjum h ON c.total BETWEEN h.min_point AND h.max_point
+WHERE s.deptno1 = 101;
