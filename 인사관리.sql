@@ -20,3 +20,19 @@ WHERE first_name LIKE '_____';
 SELECT *
 FROM employees
 WHERE salary >= 10000 OR salary + 500 >= 10000;
+
+SELECT job_id, SUM(salary)
+FROM employees
+GROUP BY job_id
+ORDER BY 1;
+
+select TO_CHAR(hire_date, 'YYYY') AS year, COUNT(*)
+FROM employees
+GROUP BY TO_CHAR(hire_date, 'YYYY')
+HAVING COUNT(*) > 1
+ORDER BY 2 DESC;
+
+select TO_CHAR(hire_date, 'YYYY') AS year, department_id AS "ºÎ¼­", COUNT(*)
+FROM employees
+GROUP BY TO_CHAR(hire_date, 'YYYY'), department_id
+ORDER BY 1, 2;
