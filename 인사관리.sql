@@ -36,3 +36,25 @@ select TO_CHAR(hire_date, 'YYYY') AS year, department_id AS "부서", COUNT(*)
 FROM employees
 GROUP BY TO_CHAR(hire_date, 'YYYY'), department_id
 ORDER BY 1, 2;
+
+-- 조인
+SELECT e.*, d.department_name
+FROM employees e
+JOIN jobs j
+ON e.job_id = j.job_id
+JOIN departments d
+ON e.department_id = d.department_id
+WHERE first_name = 'Alexander';
+
+SELECT e.*
+FROM employees e, jobs j, departments d
+WHERE e.job_id = j.job_id AND e.department_id = d.department_id
+AND e.first_name = 'Alexander';
+
+SELECT e.employee_id, 
+       e.first_name || '-' || e.last_name, 
+       ee.employee_id, 
+       ee.first_name || '-' || ee.last_name
+FROM employees e
+LEFT OUTER JOIN employees ee ON e.manager_id = ee.employee_id
+ORDER BY 1;
