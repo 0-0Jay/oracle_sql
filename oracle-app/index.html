@@ -1,0 +1,47 @@
+<!-- Create (생성 = 등록) : POST -->
+<!-- Read (조회 = 읽기) : get/ -->
+<!-- Update (수정) : put-->
+<!-- Delete (삭제)-->
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    제목: <input type="text" name="title" /><br />
+    내용: <textarea name="content"></textarea><br />
+    작성자: <input text="text" name="author" /><br />
+
+    <button onclick="addBoard()">등록</button>
+    <hr />
+    <button onclick="modifyBoard()">수정</button>
+    <!-- 3번글 : 제목(3번글입니다), 내용(3번 내용입니다) -->
+    <script>
+      async function addBoard() {
+        let title = document.querySelector('input[name="title"]').value;
+        let txt = document.querySelector("textarea").value;
+        let author = document.querySelector('input[name="author"]').value;
+
+        let response = await fetch("http://localhost:3000/board", {
+          method: "post",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            title: title,
+            content: txt,
+            author: author,
+          }),
+        });
+        let result = await response.json(); //json객체를 자바스크립트로 바꾸겠다라는 의미
+        console.log(result);
+      }
+
+      async function modifyBoard() {
+        let response = await fetch("http://localhost:3000/board", {
+          method: "put",
+        });
+      }
+    </script>
+  </body>
+</html>

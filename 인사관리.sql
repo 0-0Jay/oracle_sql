@@ -58,3 +58,4 @@ SELECT e.employee_id,
 FROM employees e
 LEFT OUTER JOIN employees ee ON e.manager_id = ee.employee_id
 ORDER BY 1;
+
