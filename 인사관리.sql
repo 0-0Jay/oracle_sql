@@ -59,3 +59,22 @@ FROM employees e
 LEFT OUTER JOIN employees ee ON e.manager_id = ee.employee_id
 ORDER BY 1;
 
+SELECT /*+ INDEX(e EMP_EMP_ID_PK) */ * 
+FROM employees;
+
+INSERT INTO employees
+SELECT employees_seq.nextval, first_name, last_name, 'email' || employees_seq.currval, phone_number, hire_date, job_id, salary, commission_pct, manager_id, department_id
+FROM employees;
+
+SELECT employees_seq.currval FROM dual;
+
+DELETE FROM employees WHERE employee_id > 206;
+
+SELECT /* INDEX(e EXP_EMP_ID_PK) */ *
+FROM employees;
+
+SELECT *
+FROM employees
+ORDER BY salary;
+
+SELECT * FROM scott.proff;
