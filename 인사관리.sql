@@ -77,4 +77,5 @@ SELECT *
 FROM employees
 ORDER BY salary;
 
-SELECT * FROM scott.proff;
+SELECT * FROM scott.prof;
+SELECT * FROM proff;
